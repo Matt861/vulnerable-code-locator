@@ -1,0 +1,80 @@
+==========================================================================================
+[1] ch.qos.logback.core.util.EnvUtil#getJDKVersion(String)
+  confidence: 1.00  removed:14  added:19
+  file: logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java
+  pre-fix lines: 22-43 (len=22)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view pre-fix snippet (run inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java | nl -ba | sed -n '2,64p'
+==========================================================================================
+[2] ch.qos.logback.core.net.HardenedObjectInputStream#initObjectFilter
+  confidence: 1.00  removed:7  added:14
+  file: logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java
+  pre-fix lines: 36-55 (len=20)
+  repo: qos-ch/logback
+  fix_sha: 9c782b45be4abdafb7e17481e24e7354c2acd1eb
+  patch: https://github.com/qos-ch/logback/commit/9c782b45be4abdafb7e17481e24e7354c2acd1eb.patch
+  view pre-fix snippet (run inside repo clone):
+    git show 9c782b45be4abdafb7e17481e24e7354c2acd1eb^:logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java | nl -ba | sed -n '16,76p'
+==========================================================================================
+[3] ch.qos.logback.core.net.HardenedObjectInputStream#initObjectFilter
+  confidence: 1.00  removed:7  added:14
+  file: logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java
+  pre-fix lines: 36-55 (len=20)
+  repo: qos-ch/logback
+  fix_sha: b8eac23a9de9e05fb6d51160b3f46acd91af9731
+  patch: https://github.com/qos-ch/logback/commit/b8eac23a9de9e05fb6d51160b3f46acd91af9731.patch
+  view pre-fix snippet (run inside repo clone):
+    git show b8eac23a9de9e05fb6d51160b3f46acd91af9731^:logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java | nl -ba | sed -n '16,76p'
+==========================================================================================
+[4] ch.qos.logback.core.net.HardenedObjectInputStream#initObjectFilter
+  confidence: 1.00  removed:1  added:3
+  file: logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java
+  pre-fix lines: 22-31 (len=10)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view pre-fix snippet (run inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java | nl -ba | sed -n '2,52p'
+==========================================================================================
+[5] ch.qos.logback.core.net.HardenedObjectInputStreamTest#writeObject(ObjectOutputStream, Object)
+  confidence: 0.90  removed:1  added:43
+  file: logback-core/src/test/java/ch/qos/logback/core/net/HardenedObjectInputStreamTest.java
+  pre-fix lines: 54-58 (len=5)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view pre-fix snippet (run inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/test/java/ch/qos/logback/core/net/HardenedObjectInputStreamTest.java | nl -ba | sed -n '34,79p'
+==========================================================================================
+[6] ch.qos.logback.core.net.HardenedObjectInputStream#HardenedObjectInputStream(InputStream, String[])
+  confidence: 0.90  removed:1  added:33
+  file: logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java
+  pre-fix lines: 36-46 (len=11)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view pre-fix snippet (run inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java | nl -ba | sed -n '16,67p'
+==========================================================================================
+[7] ch.qos.logback.core.util.EnvUtil
+  confidence: 0.70  removed:1  added:1
+  file: logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java
+  pre-fix lines: 1-6 (len=6)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view pre-fix snippet (run inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java | nl -ba | sed -n '1,27p'
+==========================================================================================
+[8] ch.qos.logback.core.rolling.ScaffoldingForRollingTests
+  confidence: 0.70  removed:1  added:1
+  file: logback-core/src/test/java/ch/qos/logback/core/rolling/ScaffoldingForRollingTests.java
+  pre-fix lines: 24-33 (len=10)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view pre-fix snippet (run inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/test/java/ch/qos/logback/core/rolling/ScaffoldingForRollingTests.java | nl -ba | sed -n '4,54p'

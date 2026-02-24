@@ -1,0 +1,327 @@
+[
+  {
+    "source_url": "https://github.com/qos-ch/logback/pull/747.patch",
+    "repo": "qos-ch/logback",
+    "title": "backport CVE-2023-6378",
+    "file_diffs": [
+      {
+        "path": "logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java",
+        "hunks": [
+          {
+            "old_start": 14,
+            "old_len": 6,
+            "new_start": 14,
+            "new_len": 7,
+            "context": "",
+            "symbol_guess": null,
+            "removed": [],
+            "added": [
+              "import java.io.InvalidObjectException;"
+            ],
+            "near_context": [
+              "package ch.qos.logback.classic.spi;",
+              "",
+              "import java.io.IOException;",
+              "import java.io.ObjectInputStream;",
+              "import java.io.ObjectOutputStream;",
+              "import java.io.Serializable;"
+            ]
+          },
+          {
+            "old_start": 25,
+            "old_len": 6,
+            "new_start": 26,
+            "new_len": 7,
+            "context": "",
+            "symbol_guess": null,
+            "removed": [],
+            "added": [
+              "// See also the paper https://www.riehle.org/computer-science/research/1998/ubilab-tr-1998-10-1.pdf"
+            ],
+            "near_context": [
+              "package ch.qos.logback.classic.spi;",
+              "import java.io.IOException;",
+              "import java.io.ObjectInputStream;",
+              "import java.io.ObjectOutputStream;",
+              "import java.io.Serializable;",
+              "import ch.qos.logback.classic.Level;",
+              "",
+              "// http://www.riehle.org/computer-science/research/1998/ubilab-tr-1998-10-1.html",
+              "",
+              "/**",
+              " * A read-only and serializable implementation of {@link ILoggingEvent}."
+            ]
+          },
+          {
+            "old_start": 38,
+            "old_len": 6,
+            "new_start": 40,
+            "new_len": 7,
+            "context": "public class LoggingEventVO implements ILoggingEvent, Serializable {",
+            "symbol_guess": null,
+            "removed": [],
+            "added": [
+              "    private static final int ARGUMENT_ARRAY_DESERIALIZATION_LIMIT = 128;"
+            ],
+            "near_context": [
+              "import java.io.IOException;",
+              "import java.io.ObjectInputStream;",
+              "import java.io.ObjectOutputStream;",
+              "import java.io.Serializable;",
+              "import ch.qos.logback.classic.Level;",
+              "// http://www.riehle.org/computer-science/research/1998/ubilab-tr-1998-10-1.html",
+              "/**",
+              "* A read-only and serializable implementation of {@link ILoggingEvent}.",
+              "",
+              "    private static final int NULL_ARGUMENT_ARRAY = -1;",
+              "    private static final String NULL_ARGUMENT_ARRAY_ELEMENT = \"NULL_ARGUMENT_ARRAY_ELEMENT\";",
+              "",
+              "    private String threadName;",
+              "    private String loggerName;"
+            ]
+          },
+          {
+            "old_start": 181,
+            "old_len": 6,
+            "new_start": 184,
+            "new_len": 12,
+            "context": "private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundE",
+            "symbol_guess": "readObject",
+            "removed": [],
+            "added": [
+              "",
+              "        // Prevent DOS attacks via large or negative arrays",
+              "        if (argArrayLen < 0 || argArrayLen > ARGUMENT_ARRAY_DESERIALIZATION_LIMIT) {",
+              "            throw new InvalidObjectException(\"Argument array length is invalid: \" + argArrayLen);",
+              "        }",
+              ""
+            ],
+            "near_context": [
+              "import ch.qos.logback.classic.Level;",
+              "// http://www.riehle.org/computer-science/research/1998/ubilab-tr-1998-10-1.html",
+              "/**",
+              "* A read-only and serializable implementation of {@link ILoggingEvent}.",
+              "private static final int NULL_ARGUMENT_ARRAY = -1;",
+              "private static final String NULL_ARGUMENT_ARRAY_ELEMENT = \"NULL_ARGUMENT_ARRAY_ELEMENT\";",
+              "private String threadName;",
+              "private String loggerName;",
+              "        level = Level.toLevel(levelInt);",
+              "",
+              "        int argArrayLen = in.readInt();",
+              "        if (argArrayLen != NULL_ARGUMENT_ARRAY) {",
+              "            argumentArray = new String[argArrayLen];",
+              "            for (int i = 0; i < argArrayLen; i++) {"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java",
+        "hunks": [
+          {
+            "old_start": 3,
+            "old_len": 6,
+            "new_start": 3,
+            "new_len": 7,
+            "context": "",
+            "symbol_guess": null,
+            "removed": [],
+            "added": [
+              "import java.io.ObjectInputFilter;"
+            ],
+            "near_context": [
+              "import java.io.IOException;",
+              "import java.io.InputStream;",
+              "import java.io.InvalidClassException;",
+              "import java.io.ObjectInputStream;",
+              "import java.io.ObjectStreamClass;",
+              "import java.util.ArrayList;"
+            ]
+          },
+          {
+            "old_start": 20,
+            "old_len": 20,
+            "new_start": 21,
+            "new_len": 27,
+            "context": "",
+            "symbol_guess": "super",
+            "removed": [
+              "    final List<String> whitelistedClassNames;",
+              "    final static String[] JAVA_PACKAGES = new String[] { \"java.lang\", \"java.util\" };",
+              "    public HardenedObjectInputStream(InputStream in, String[] whilelist) throws IOException {",
+              "",
+              "        if (whilelist != null) {",
+              "            for (int i = 0; i < whilelist.length; i++) {",
+              "                this.whitelistedClassNames.add(whilelist[i]);"
+            ],
+            "added": [
+              "    final private List<String> whitelistedClassNames;",
+              "    final private static String[] JAVA_PACKAGES = new String[] { \"java.lang\", \"java.util\" };",
+              "    final private static int DEPTH_LIMIT = 16;",
+              "    final private static int ARRAY_LIMIT = 10000;",
+              "    public HardenedObjectInputStream(InputStream in, String[] whitelist) throws IOException {",
+              "        this.initObjectFilter();",
+              "        if (whitelist != null) {",
+              "            for (int i = 0; i < whitelist.length; i++) {",
+              "                this.whitelistedClassNames.add(whitelist[i]);",
+              "    private void initObjectFilter() {",
+              "        this.setObjectInputFilter(ObjectInputFilter.Config.createFilter(",
+              "                \"maxarray=\" + ARRAY_LIMIT + \";maxdepth=\" + DEPTH_LIMIT + \";\"",
+              "        ));",
+              "    }"
+            ],
+            "near_context": [
+              "import java.io.IOException;",
+              "import java.io.InputStream;",
+              "import java.io.InvalidClassException;",
+              "import java.io.ObjectInputStream;",
+              "import java.io.ObjectStreamClass;",
+              "import java.util.ArrayList;",
+              " */",
+              "public class HardenedObjectInputStream extends ObjectInputStream {",
+              "",
+              "",
+              "        super(in);",
+              "        this.whitelistedClassNames = new ArrayList<String>();",
+              "            }",
+              "        }",
+              "    }",
+              "",
+              "    public HardenedObjectInputStream(InputStream in, List<String> whitelist) throws IOException {",
+              "        super(in);",
+              "",
+              "From fbbe64d75c64933962e9a60d98d64cb9208963a0 Mon Sep 17 00:00:00 2001",
+              "From: Ceki Gulcu <ceki@qos.ch>",
+              "Date: Mon, 27 Nov 2023 10:57:58 +0100",
+              "Subject: [PATCH 2/3] cater for array size marked with -1",
+              "Signed-off-by: Ceki Gulcu <ceki@qos.ch>",
+              "---",
+              ".../main/java/ch/qos/logback/classic/spi/LoggingEventVO.java    | 2 +-",
+              "1 file changed, 1 insertion(+), 1 deletion(-)"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java",
+        "hunks": [
+          {
+            "old_start": 186,
+            "old_len": 7,
+            "new_start": 186,
+            "new_len": 7,
+            "context": "private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundE",
+            "symbol_guess": "readObject",
+            "removed": [
+              "        if (argArrayLen < 0 || argArrayLen > ARGUMENT_ARRAY_DESERIALIZATION_LIMIT) {"
+            ],
+            "added": [
+              "        if (argArrayLen < NULL_ARGUMENT_ARRAY || argArrayLen > ARGUMENT_ARRAY_DESERIALIZATION_LIMIT) {"
+            ],
+            "near_context": [
+              "        int argArrayLen = in.readInt();",
+              "",
+              "        // Prevent DOS attacks via large or negative arrays",
+              "            throw new InvalidObjectException(\"Argument array length is invalid: \" + argArrayLen);",
+              "        }",
+              "",
+              "From f022bfcffbe80631705c7fea5c1d4b75d6250e71 Mon Sep 17 00:00:00 2001",
+              "From: Ceki Gulcu <ceki@qos.ch>",
+              "Date: Mon, 27 Nov 2023 11:26:01 +0100",
+              "Subject: [PATCH 3/3] ensure JDK 8 compatibility",
+              "Signed-off-by: Ceki Gulcu <ceki@qos.ch>",
+              "---",
+              ".../qos/logback/core/net/HardenedObjectInputStream.java   | 8 +-------",
+              "1 file changed, 1 insertion(+), 7 deletions(-)"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java",
+        "hunks": [
+          {
+            "old_start": 3,
+            "old_len": 7,
+            "new_start": 3,
+            "new_len": 6,
+            "context": "",
+            "symbol_guess": null,
+            "removed": [
+              "import java.io.ObjectInputFilter;"
+            ],
+            "added": [],
+            "near_context": [
+              "import java.io.IOException;",
+              "import java.io.InputStream;",
+              "import java.io.InvalidClassException;",
+              "import java.io.ObjectInputStream;",
+              "import java.io.ObjectStreamClass;",
+              "import java.util.ArrayList;"
+            ]
+          },
+          {
+            "old_start": 28,
+            "old_len": 7,
+            "new_start": 27,
+            "new_len": 6,
+            "context": "public class HardenedObjectInputStream extends ObjectInputStream {",
+            "symbol_guess": "HardenedObjectInputStream",
+            "removed": [
+              "        this.initObjectFilter();"
+            ],
+            "added": [],
+            "near_context": [
+              "import java.io.IOException;",
+              "import java.io.InputStream;",
+              "import java.io.InvalidClassException;",
+              "import java.io.ObjectInputStream;",
+              "import java.io.ObjectStreamClass;",
+              "import java.util.ArrayList;",
+              "",
+              "    public HardenedObjectInputStream(InputStream in, String[] whitelist) throws IOException {",
+              "        super(in);",
+              "        this.whitelistedClassNames = new ArrayList<String>();",
+              "        if (whitelist != null) {",
+              "            for (int i = 0; i < whitelist.length; i++) {"
+            ]
+          },
+          {
+            "old_start": 37,
+            "old_len": 11,
+            "new_start": 35,
+            "new_len": 7,
+            "context": "public HardenedObjectInputStream(InputStream in, String[] whitelist) throws IOEx",
+            "symbol_guess": "HardenedObjectInputStream",
+            "removed": [
+              "    private void initObjectFilter() {",
+              "        this.setObjectInputFilter(ObjectInputFilter.Config.createFilter(",
+              "                \"maxarray=\" + ARRAY_LIMIT + \";maxdepth=\" + DEPTH_LIMIT + \";\"",
+              "        ));",
+              "    }"
+            ],
+            "added": [
+              ""
+            ],
+            "near_context": [
+              "import java.io.ObjectInputStream;",
+              "import java.io.ObjectStreamClass;",
+              "import java.util.ArrayList;",
+              "public HardenedObjectInputStream(InputStream in, String[] whitelist) throws IOException {",
+              "super(in);",
+              "this.whitelistedClassNames = new ArrayList<String>();",
+              "if (whitelist != null) {",
+              "for (int i = 0; i < whitelist.length; i++) {",
+              "        }",
+              "    }",
+              "",
+              "    public HardenedObjectInputStream(InputStream in, List<String> whitelist) throws IOException {",
+              "        super(in);",
+              ""
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

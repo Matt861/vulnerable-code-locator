@@ -1,0 +1,160 @@
+==========================================================================================
+[1] ch.qos.logback.core.net.HardenedObjectInputStream#HardenedObjectInputStream
+  confidence: 1.00  removed:2  added:36
+  language: java
+  file: logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java
+  pre-fix lines: 22-46 (len=25)
+  context: public class HardenedObjectInputStream extends ObjectInputStream {
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view (inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java | nl -ba | sed -n '2,52p'
+==========================================================================================
+[2] ch.qos.logback.core.net.HardenedObjectInputStreamTest#writeObject
+  confidence: 1.00  removed:1  added:43
+  language: java
+  file: logback-core/src/test/java/ch/qos/logback/core/net/HardenedObjectInputStreamTest.java
+  pre-fix lines: 54-58 (len=5)
+  context: private void writeObject(ObjectOutputStream oos, Object o) throws IOException {
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view (inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/test/java/ch/qos/logback/core/net/HardenedObjectInputStreamTest.java | nl -ba | sed -n '34,79p'
+==========================================================================================
+[3] ch.qos.logback.core.util.EnvUtil#isJDK_N_OrHigher
+  confidence: 0.75  removed:14  added:19
+  language: java
+  file: logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java
+  pre-fix lines: 22-43 (len=22)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view (inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java | nl -ba | sed -n '2,64p'
+==========================================================================================
+[4] ch.qos.logback.core.net.HardenedObjectInputStream#super
+  confidence: 0.75  removed:7  added:14
+  language: java
+  file: logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java
+  pre-fix lines: 36-55 (len=20)
+  repo: qos-ch/logback
+  fix_sha: 9c782b45be4abdafb7e17481e24e7354c2acd1eb
+  patch: https://github.com/qos-ch/logback/commit/9c782b45be4abdafb7e17481e24e7354c2acd1eb.patch
+  view (inside repo clone):
+    git show 9c782b45be4abdafb7e17481e24e7354c2acd1eb^:logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java | nl -ba | sed -n '16,76p'
+==========================================================================================
+[5] ch.qos.logback.core.net.HardenedObjectInputStream#super
+  confidence: 0.75  removed:7  added:14
+  language: java
+  file: logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java
+  pre-fix lines: 36-55 (len=20)
+  repo: qos-ch/logback
+  fix_sha: b8eac23a9de9e05fb6d51160b3f46acd91af9731
+  patch: https://github.com/qos-ch/logback/commit/b8eac23a9de9e05fb6d51160b3f46acd91af9731.patch
+  view (inside repo clone):
+    git show b8eac23a9de9e05fb6d51160b3f46acd91af9731^:logback-core/src/main/java/ch/qos/logback/core/net/HardenedObjectInputStream.java | nl -ba | sed -n '16,76p'
+==========================================================================================
+[6] ch.qos.logback.core.util.EnvUtil#Copyright
+  confidence: 0.75  removed:1  added:1
+  language: java
+  file: logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java
+  pre-fix lines: 1-6 (len=6)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view (inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java | nl -ba | sed -n '1,27p'
+==========================================================================================
+[7] ch.qos.logback.core.rolling.ScaffoldingForRollingTests
+  confidence: 0.60  removed:1  added:1
+  language: java
+  file: logback-core/src/test/java/ch/qos/logback/core/rolling/ScaffoldingForRollingTests.java
+  pre-fix lines: 24-33 (len=10)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view (inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/test/java/ch/qos/logback/core/rolling/ScaffoldingForRollingTests.java | nl -ba | sed -n '4,54p'
+==========================================================================================
+[8] ch.qos.logback.classic.spi.LoggingEventVO#readObject
+  confidence: 0.55  removed:0  added:6
+  language: java
+  file: logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java
+  pre-fix lines: 203-208 (len=6)
+  context: private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundE
+  repo: qos-ch/logback
+  fix_sha: 9c782b45be4abdafb7e17481e24e7354c2acd1eb
+  patch: https://github.com/qos-ch/logback/commit/9c782b45be4abdafb7e17481e24e7354c2acd1eb.patch
+  view (inside repo clone):
+    git show 9c782b45be4abdafb7e17481e24e7354c2acd1eb^:logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java | nl -ba | sed -n '183,229p'
+==========================================================================================
+[9] ch.qos.logback.classic.spi.LoggingEventVO#readObject
+  confidence: 0.55  removed:0  added:6
+  language: java
+  file: logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java
+  pre-fix lines: 203-208 (len=6)
+  context: private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundE
+  repo: qos-ch/logback
+  fix_sha: b8eac23a9de9e05fb6d51160b3f46acd91af9731
+  patch: https://github.com/qos-ch/logback/commit/b8eac23a9de9e05fb6d51160b3f46acd91af9731.patch
+  view (inside repo clone):
+    git show b8eac23a9de9e05fb6d51160b3f46acd91af9731^:logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java | nl -ba | sed -n '183,229p'
+==========================================================================================
+[10] ch.qos.logback.classic.spi.LoggingEventVO#readObject
+  confidence: 0.55  removed:0  added:5
+  language: java
+  file: logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java
+  pre-fix lines: 181-186 (len=6)
+  context: private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundE
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view (inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java | nl -ba | sed -n '161,207p'
+==========================================================================================
+[11] ch.qos.logback.core.util.EnvUtil#isJDK7OrHigher
+  confidence: 0.55  removed:0  added:4
+  language: java
+  file: logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java
+  pre-fix lines: 52-57 (len=6)
+  context: static public boolean isJDK7OrHigher() {
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view (inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-core/src/main/java/ch/qos/logback/core/util/EnvUtil.java | nl -ba | sed -n '32,78p'
+==========================================================================================
+[12] ch.qos.logback.classic.spi.LoggingEventVO
+  confidence: 0.45  removed:0  added:3
+  language: java
+  file: logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java
+  pre-fix lines: 14-46 (len=33)
+  repo: qos-ch/logback
+  fix_sha: 9c782b45be4abdafb7e17481e24e7354c2acd1eb
+  patch: https://github.com/qos-ch/logback/commit/9c782b45be4abdafb7e17481e24e7354c2acd1eb.patch
+  view (inside repo clone):
+    git show 9c782b45be4abdafb7e17481e24e7354c2acd1eb^:logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java | nl -ba | sed -n '1,40p'
+==========================================================================================
+[13] ch.qos.logback.classic.spi.LoggingEventVO
+  confidence: 0.45  removed:0  added:3
+  language: java
+  file: logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java
+  pre-fix lines: 14-46 (len=33)
+  repo: qos-ch/logback
+  fix_sha: b8eac23a9de9e05fb6d51160b3f46acd91af9731
+  patch: https://github.com/qos-ch/logback/commit/b8eac23a9de9e05fb6d51160b3f46acd91af9731.patch
+  view (inside repo clone):
+    git show b8eac23a9de9e05fb6d51160b3f46acd91af9731^:logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java | nl -ba | sed -n '1,40p'
+==========================================================================================
+[14] ch.qos.logback.classic.spi.LoggingEventVO
+  confidence: 0.45  removed:0  added:2
+  language: java
+  file: logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java
+  pre-fix lines: 14-43 (len=30)
+  repo: qos-ch/logback
+  fix_sha: bb095154be011267b64e37a1d401546e7cc2b7c3
+  patch: https://github.com/qos-ch/logback/commit/bb095154be011267b64e37a1d401546e7cc2b7c3.patch
+  view (inside repo clone):
+    git show bb095154be011267b64e37a1d401546e7cc2b7c3^:logback-classic/src/main/java/ch/qos/logback/classic/spi/LoggingEventVO.java | nl -ba | sed -n '1,40p'
